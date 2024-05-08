@@ -28,19 +28,79 @@ header {
   font-size: 2em;
 }
 
+/* Centrado general para el formulario y elementos internos */
 form {
-  background-color: rgb(245, 231, 198);
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 400px;
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
   padding: 20px;
-  align-items: start;
-  justify-content: center;
+  background-color: rgb(245, 231, 198);
   border-radius: 25px;
-  font-size: 1.5em;
   box-shadow: 1px 2px 18px 2px rgba(0, 0, 0, 0.75);
+  width: 400px;
+  margin: 30px auto; /* Auto en los márgenes laterales centra el formulario en la página */
 }
+
+/* Ajustes para el botón */
+form #boton {
+  width: 180px;
+  height: 40px; /* Asegura que el botón tenga una altura adecuada */
+  font-size: 1em;
+  border: none;
+  background-color: rgb(210, 111, 227);
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 1px 2px 40px -3px rgba(0, 0, 0, 0.55);
+}
+
+.card {
+  background: var(--col-card-bg);
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  color: var(--col-card-content);
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Centrado horizontal y movido hacia abajo */
+  position: absolute;
+  top: 60%; /* Movido hacia abajo para no estar tan arriba */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+
+.img-deco {
+  width: 200px; /* Tamaño de la imagen ajustado */
+  height: 200px; /* Tamaño de la imagen ajustado */
+  position: absolute;
+  border-radius: 6px;
+  z-index: -1; /* Coloca la imagen detrás de la tarjeta */
+}
+
+/* Posiciona la primera imagen en la esquina inferior izquierda */
+.img-deco:first-child {
+  left: 0;
+  bottom: 0;
+  transform: translate(-30%, 30%); /* Ajusta la posición para salir un poco de la tarjeta */
+}
+
+/* Posiciona la segunda imagen en la esquina inferior derecha y la rota */
+.img-deco.rotate {
+  right: 0;
+  bottom: 0;
+  transform: translate(30%, 30%) rotate(20deg); /* Ajusta la posición para salir un poco de la tarjeta y añade rotación */
+}
+
+
 
 form #nombre {
   width: 98%;
@@ -72,15 +132,6 @@ form div {
   justify-content: center;
 }
 
-form #boton {
-  width: 180px;
-  font-size: 1em;
-  border: none;
-  background-color: rgb(210, 111, 227);
-  color: white;
-  border-radius: 15px;
-}
-
 form #boton:hover {
 
   cursor: pointer;
@@ -89,27 +140,6 @@ form #boton:hover {
 
 .hidden {
   display: none;
-}
-
-.card {
-  background: var(--col-card-bg);
-  width: var(--card-width);
-  height: var(--card-height);
-  padding: 3px;
-  position: relative;
-  border-radius: 6px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  font-size: 1.5em;
-  color: var(--col-card-content);
-  cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 200px;
-  /* z-index: 1000; */
-  transition: all 0.5s ease-in-out;
 }
 
 .card:hover {
@@ -161,25 +191,6 @@ form #boton:hover {
   opacity: 1;
   transition: opacity 0.5s;
   animation: spin 2.5s linear infinite;
-}
-
-.img-deco {
-  width: 400px;
-  height: 400px;
-  position: absolute;
-  top: 350px;
-  left: 0px;
-  right: 0;
-  bottom: 0;
-  object-fit: cover;
-  border-radius: 6px;
-  z-index: -100;
-}
-
-.rotate {
-  /* transform: rotate(180deg); */
-  top: 450px;
-  left: 450px;
 }
 
 @keyframes spin {
