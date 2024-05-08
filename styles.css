@@ -23,6 +23,10 @@ body {
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 .card {
   background: var(--col-card-bg);
   width: var(--card-width);
