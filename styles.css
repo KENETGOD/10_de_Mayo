@@ -1,0 +1,123 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+  --col-bg: #eec8ee;
+  --col-card-bg: #f0b1e5;
+  --col-card-content: rgb(88 199 250 / 0%);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--col-bg);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--col-card-bg);
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  color: var(--col-card-content);
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  /* z-index: 1000; */
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+  color: rgb(172, 88, 250);
+  transition: color 1s;
+}
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #ffb8ec,
+    #f8abff 43%,
+    #ec98e8
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #f5dfef,
+    #eabdee 43%,
+    #ffb1fb
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+
+.img-deco {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 350px;
+  left: 120px;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  border-radius: 6px;
+  z-index: -100;
+}
+
+.rotate {
+  /* transform: rotate(180deg); */
+  top: 450px;
+  left: 450px;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
