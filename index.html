@@ -93,27 +93,25 @@
     <link rel="stylesheet" href="styles.css">
   </header>
   <div class="container">
-    <form action="send.php" method="post">
+    <form id="form">
       <label for="nombre">Escribe tu nombre</label>
       <input type="text" name="nombre" id="nombre">
       <label for="mensaje">Mensaje para tu madre:</label>
       <textarea name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
       <div>
-        <input type="submit" value="Enviar" id="boton" onclick="showCard()">
+        <!-- send the values from the inputs above-->
+
+        <input type="submit" value="Enviar" id="boton" onclick="showCard('nombre', 'mensaje')">
       </div>
 
     </form>
   </div>
 
-  <div class="card hidden" id="card">
+  <div class="card" id="card">
     <h1>Carta para mamá</h1>
     <p>Querida mamá:</p>
-    <p>
-      <?php echo $message; ?>
-    </p>
-    <p>Con cariño,
-      <?php echo $name; ?>
-    </p>
+    <p id="res-msg"></p>
+    <p>Con cariño, <span id="res-name"></span></p>
 
     <img src="flowers1.png" alt="" class="img-deco">
     <img src="flowers2.png" alt="" class="img-deco rotate">
